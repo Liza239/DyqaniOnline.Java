@@ -1,4 +1,4 @@
-package com.universum.model;
+package com.universum;
 
 import java.util.ArrayList;
 import java.util.Collections;

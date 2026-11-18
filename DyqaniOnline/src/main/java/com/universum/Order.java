@@ -1,4 +1,4 @@
-package com.universum.model;
+package com.universum;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

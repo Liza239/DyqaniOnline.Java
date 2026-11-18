@@ -1,4 +1,4 @@
-package com.universum.model;
+package com.universum;
 
 public class OrderItem {
 

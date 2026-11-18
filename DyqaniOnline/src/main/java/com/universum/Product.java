@@ -1,4 +1,4 @@
-package com.universum.model;
+package com.universum;
 
 import java.util.Objects;
 
@@ -29,6 +29,21 @@ public class Product {
         return name;
     }
 
+    public String getDescription(){
+        return description;
+    }
+
+    public double getPrice(){
+        return price;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public boolean isAvailable() {
+        return stock > 0;
+    }
     public void setName(String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Emri i produktit nuk mund të jetë bosh.");
@@ -36,17 +51,10 @@ public class Product {
         this.name = name.trim();
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public void setDescription(String description) {
         this.description = (description == null) ? "" : description.trim();
     }
 
-    public double getPrice() {
-        return price;
-    }
 
     public void setPrice(double price) {
         if (price <= 0) {
@@ -55,19 +63,12 @@ public class Product {
         this.price = price;
     }
 
-    public int getStock() {
-        return stock;
-    }
 
     public void setStock(int stock) {
         if (stock < 0) {
             throw new IllegalArgumentException("Stoku nuk mund të jetë negativ.");
         }
         this.stock = stock;
-    }
-
-    public boolean isAvailable() {
-        return stock > 0;
     }
 
     public void increaseStock(int quantity) {
@@ -87,6 +88,8 @@ public class Product {
         stock -= quantity;
     }
 
+    public abstract String getSizaLabel();
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -100,8 +103,8 @@ public class Product {
         return Objects.hash(id);
     }
 
-    @Override
     public String toString() {
-        return "Product{id=" + id + ", name='" + name + "', price=" + price + ", stock=" + stock + "}";
+        return getClass().getSimpleName() + "{id=" + id + ", name='" + name
+                + "', size=" + getSizeLabel() + ", price=" + price + ", stock=" + stock + "}";
     }
 }
