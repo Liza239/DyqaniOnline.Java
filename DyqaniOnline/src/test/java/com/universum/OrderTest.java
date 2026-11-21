@@ -10,12 +10,13 @@ class CustomerTest {
         Customer c = new Customer( 1, "Arben Krasniqi", "arben@email.com", "Prishtinë");
         assertEquals("Arben Krasniqi", c.getName());
         assertEquals("Arben@email.com", c.getEmail());
+        assertEquals("Prishtinë", c.getLocation());
     }
 
     @Test
     void emailGabuarHedhGabim() {
         assertThrows(IllegalArgumentException.class,
-                () -> nwe Customer(1, "Arben", "email-i-gabuar", "Prishtinë"));
+                () -> new Customer(1, "Arben", "email-i-gabuar", "Prishtinë"));
     }
 
     @Test

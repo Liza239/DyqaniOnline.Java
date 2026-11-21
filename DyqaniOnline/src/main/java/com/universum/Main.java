@@ -1,18 +1,26 @@
 package com.universum;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-            IO.println("Deliza dhe Benerta");
+    public static void main(String[] args) {
+        System.out.println("--- Dyqani Online për veshje - Benerta, Deliza dhe Eulina ---");
+
+        Product bluze = new Clothing(1, "Polo", "Bluzë pambuku", 19.99, 10, "M", "Blu");
+        Product kepuce = new Footwear(2, "Sneakers", "Atlete sportive", 59.99, 5, 42);
+
+        Product[] produktet = { bluze, kepuce };
+        for (Product p : produktet) {
+            System.out.println(p);
         }
+
+        Customer klienti = new Customer(1, "Arben Krasniqi", "arben@email.com", "Prishtinë");
+        klienti.getCart().addProduct(bluze, 2);
+        klienti.getCart().addProduct(kepuce, 1);
+        System.out.println("Totali i shportës: " + klienti.getCart().getTotal());
+
+        Order porosia = klienti.placeOrder(100);
+        porosia.pay();
+        System.out.println(porosia);
+        System.out.println("Stoku i bluzës pas porosisë: " + bluze.getStock());
     }
 }

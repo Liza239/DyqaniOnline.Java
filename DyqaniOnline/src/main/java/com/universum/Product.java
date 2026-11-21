@@ -44,6 +44,13 @@ public class Product {
     public boolean isAvailable() {
         return stock > 0;
     }
+
+    public boolean hasStock(int quantity){
+        return quantity > 0 && stock >= quantity;
+    }
+
+
+
     public void setName(String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Emri i produktit nuk mund të jetë bosh.");
